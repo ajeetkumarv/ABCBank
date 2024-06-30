@@ -4,6 +4,7 @@ import com.abcbank.customer.dto.CustomerDto;
 import com.abcbank.customer.mapper.CustomerMapper;
 import com.abcbank.customer.model.Customer;
 import com.abcbank.customer.repository.CustomerRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +27,9 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public CustomerDto fetchCustomer(Long id) {
         Optional<Customer> customerDto = customerRepository.findById(id);
-        Customer customer = customerDto.get();
+
+        Customer customer = customerDto.orElseThrow(
+                () -> new EntityNotFoundException("Customer not found with id: " + id));
         return CustomerMapper.toCustomerDto(customer);
     }
 }
