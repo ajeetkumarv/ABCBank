@@ -1,2 +1,16 @@
 Why do we need to write tests for Repository Layer?
 - To test custom methods
+
+Test code should be non-deterministic
+
+Test section: Arrange-Act-Assert
+The purpose of Junit 5 extensions is to extend the behavior of test classes or methods
+
+When to use @ExtendWith(SpringExtension.class) or @SpringBootTest?
+    - https://stackoverflow.com/a/69357115/2216472
+
+TODO
+- jsypt for password
+- Integration Tests to src/it
+
+

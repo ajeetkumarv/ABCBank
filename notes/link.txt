@@ -1,7 +1,10 @@
-Developing
+#Developing
 
 
-Testing
+#Testing
 https://www.youtube.com/watch?v=S9e8qL0b4hU&list=PL82C6-O4XrHcg8sNwpoDDhcxUCbFy855E&index=6
+https://stackoverflow.com/questions/61433806/junit-5-with-spring-boot-when-to-use-extendwith-spring-or-mockito
+https://www.baeldung.com/java-spring-mockito-mock-mockbean
+https://stackoverflow.com/a/72415793/2216472 on restcontrolleradvice-vs-controlleradvice
 
-
+#Errors faced

@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
@@ -24,6 +26,12 @@ public class CustomerController {
     @GetMapping("/{id}")
     public CustomerDto fetchCustomer(@PathVariable Long id) {
         CustomerDto customerDto = customerService.fetchCustomer(id);
+        return customerDto;
+    }
+
+    @GetMapping("/all")
+    public List<CustomerDto> fetchAllCustomers() { //TODO pagination
+        List<CustomerDto> customerDto = customerService.fetchAllCustomers();
         return customerDto;
     }
 }
