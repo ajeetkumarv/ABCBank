@@ -1,0 +1,7 @@
+- localstack
+- test db in docker
+- jsypt for password
+- Integration Tests to src/it
+- parallel tests
+- sequence tests
+

@@ -2,13 +2,17 @@
 @ExtendWith(MockitoExtension.class) <- mockito provided JUnit 5 Spring provided -> @ExtendWith(SpringExtension.class)
 
 
-- Cannot instantiate @InjectMocks field named 'customerService'! Cause: the type 'CustomerService' is an interface.
-    @InjectMocks should use Impl
-
-
 Mockito’s @Mock for class level mocks used with  MockitoAnnotations.initMocks() or extention
 Mockito.mock() inside methods
 Spring Boot’s @MockBean When we use the annotation on a field, the mock will be injected into the field, as well as being registered in the application context.
 
 
+@SneakyThrows
+
 SLICED Tests
+awaitilty
+launchdark okhttp
+BDD tests.
+
+
+jsonpath "$.size()"

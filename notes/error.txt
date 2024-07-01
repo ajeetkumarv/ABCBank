@@ -1,0 +1,3 @@
+- Cannot instantiate @InjectMocks field named 'customerService'! Cause: the type 'CustomerService' is an interface.
+    @InjectMocks should use Impl
+

@@ -9,12 +9,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.time.LocalDate;
-
+import static com.abcbank.customer.CustomerTestHelper.createCustomer;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
@@ -41,19 +38,4 @@ class CustomerServiceTest {
         assertThat(customerCreateResult).isNotNull();
         assertThat(customerCreateResult.getId()).isGreaterThan(0L);
     }
-
-    /* HELPER METHODS */
-
-    private Customer createCustomer() {
-        Customer customer = new Customer();
-
-        customer.setSalutation("Mr.");
-        customer.setFirstName("Tom");
-        customer.setMiddleName("Vergese");
-        customer.setLastName("Franken");
-        customer.setDateOfBirth(LocalDate.now().minusYears(20));
-
-        return customer;
-    }
-
 }

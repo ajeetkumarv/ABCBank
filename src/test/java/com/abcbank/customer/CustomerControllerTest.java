@@ -1,27 +1,26 @@
 package com.abcbank.customer;
 
+import com.abcbank.customer.dto.CustomerDto;
 import com.abcbank.customer.model.Customer;
 import com.abcbank.customer.service.CustomerService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
-import org.mockito.BDDMockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import java.time.LocalDate;
-
+import static com.abcbank.customer.CustomerTestHelper.createCustomer;
+import static com.abcbank.customer.mapper.CustomerMapper.toCustomerDto;
 import static org.hamcrest.CoreMatchers.is;
-import static org.awaitility.Awaitility.given;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 @WebMvcTest(controllers = CustomerController.class)
@@ -41,27 +40,27 @@ class CustomerControllerTest {
     @Test
     @SneakyThrows
     public void createCustomer_success() {
-        BDDMockito.given(customerService.createCustomer(ArgumentMatchers.any()))
-                .willAnswer(invocation -> invocation.getArgument(0));
+        Customer customer = createCustomer();
+        customer.setId(1L);
+        CustomerDto resultDto = toCustomerDto(customer);
+
+        /* BDD Style */
+        //BDDMockito.given(customerService.createCustomer(ArgumentMatchers.any()))
+        //        .willAnswer(invocation -> resultDto);
+
+
+        when(customerService.createCustomer(ArgumentMatchers.any())).thenReturn(resultDto);
 
         ResultActions response = mockMvc.perform(post("/customer/create")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(createCustomer())));
 
-        response.andExpect(MockMvcResultMatchers.status().isCreated());
+        response.andExpect(MockMvcResultMatchers.status().isCreated())
+                .andDo(MockMvcResultHandlers.print());
         response.andExpect(MockMvcResultMatchers.jsonPath("firstName", is("Tom")));
+        response.andExpect(MockMvcResultMatchers.jsonPath("$.id", is(1)));
     }
 
-    private Customer createCustomer() {
-        Customer customer = new Customer();
 
-        customer.setSalutation("Mr.");
-        customer.setFirstName("Tom");
-        customer.setMiddleName("Vergese");
-        customer.setLastName("Franken");
-        customer.setDateOfBirth(LocalDate.now().minusYears(20));
-
-        return customer;
-    }
 
 }

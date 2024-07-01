@@ -9,8 +9,6 @@ The purpose of Junit 5 extensions is to extend the behavior of test classes or m
 When to use @ExtendWith(SpringExtension.class) or @SpringBootTest?
     - https://stackoverflow.com/a/69357115/2216472
 
-TODO
-- jsypt for password
-- Integration Tests to src/it
+
 
 

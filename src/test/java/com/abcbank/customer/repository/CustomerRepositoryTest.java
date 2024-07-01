@@ -7,9 +7,9 @@ import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
-import java.time.LocalDate;
 import java.util.Optional;
 
+import static com.abcbank.customer.CustomerTestHelper.createCustomer;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
@@ -41,20 +41,6 @@ class CustomerRepositoryTest {
         Optional<Customer> customerFindResult = customerRepository.findById(1L);
 
         assertThat(customerFindResult).isEmpty();
-    }
-
-    /* HELPER METHODS */
-
-    private Customer createCustomer() {
-        Customer customer = new Customer();
-
-        customer.setSalutation("Mr.");
-        customer.setFirstName("Tom");
-        customer.setMiddleName("Vergese");
-        customer.setLastName("Franken");
-        customer.setDateOfBirth(LocalDate.now().minusYears(20));
-
-        return customer;
     }
 
 }
