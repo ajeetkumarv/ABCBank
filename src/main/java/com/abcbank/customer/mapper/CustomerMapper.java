@@ -9,7 +9,7 @@ public class CustomerMapper {
         Customer customer = new Customer();
 
         customer.setId(customerDto.getId());
-        customer.setSalutation(customer.getSalutation());
+        customer.setSalutation(customerDto.getSalutation());
         customer.setFirstName(customerDto.getFirstName());
         customer.setMiddleName(customerDto.getMiddleName());
         customer.setLastName(customerDto.getLastName());

@@ -9,4 +9,8 @@ public interface CustomerService {
 
     CustomerDto fetchCustomer(Long id);
     List<CustomerDto> fetchAllCustomers();
+
+    CustomerDto updateCustomer(CustomerDto customerDto);
+
+    void deleteCustomer(Long id);
 }

@@ -1,7 +1,6 @@
 package com.abcbank.customer;
 
 import com.abcbank.customer.dto.CustomerDto;
-import com.abcbank.customer.model.Customer;
 import com.abcbank.customer.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,9 +28,19 @@ public class CustomerController {
         return customerDto;
     }
 
+    @PutMapping("/update")
+    public CustomerDto updateCustomer(@RequestBody CustomerDto customerDto) {
+        return customerService.updateCustomer(customerDto);
+    }
+
     @GetMapping("/all")
     public List<CustomerDto> fetchAllCustomers() { //TODO pagination
-        List<CustomerDto> customerDto = customerService.fetchAllCustomers();
-        return customerDto;
+        return customerService.fetchAllCustomers();
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteCustomer(@PathVariable Long id) {
+        customerService.deleteCustomer(id);
+        return ResponseEntity.ok("Customer deleted successfully");
     }
 }
