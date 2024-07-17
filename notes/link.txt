@@ -8,3 +8,10 @@ https://www.baeldung.com/java-spring-mockito-mock-mockbean
 https://stackoverflow.com/a/72415793/2216472 on restcontrolleradvice-vs-controlleradvice
 
 #Errors faced
+
+
+
+Notes
+https://stackoverflow.com/questions/49673660/return-responseentity-vs-returning-pojo
+https://medium.com/@javatechie/spring-boot-password-encryption-using-jasypt-e92eed7343ab  key is project name only
+

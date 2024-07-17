@@ -1,3 +1,4 @@
+https://stackoverflow.com/a/60308868/2216472 notes about below
 @RunWith(MockitoJUnitRunner.class) <- mockito provided JUnit 4 Spring provided -> @RunWith(SpringRunner.class)
 @ExtendWith(MockitoExtension.class) <- mockito provided JUnit 5 Spring provided -> @ExtendWith(SpringExtension.class)
 
@@ -16,3 +17,16 @@ BDD tests.
 
 
 jsonpath "$.size()"
+
+
+
+
+@Value is immutable version of @Data
+
+
+----------------
+jsypt
+mvn jasypt:encrypt-value -Djasypt.encryptor.password=yourkey -Djasypt.plugin.value=youractualpass
+ENC(someencruptedtext)
+mvn jasypt:decrypt-value -Djasypt.encryptor.password=yourkey -Djasypt.plugin.value=someencruptedtext
+----------------
