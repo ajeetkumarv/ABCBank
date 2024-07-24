@@ -30,3 +30,9 @@ mvn jasypt:encrypt-value -Djasypt.encryptor.password=yourkey -Djasypt.plugin.val
 ENC(someencruptedtext)
 mvn jasypt:decrypt-value -Djasypt.encryptor.password=yourkey -Djasypt.plugin.value=someencruptedtext
 ----------------
+
+----------------
+docker run -d --name my-redis -p 6379:6379 redis
+docker exec -it my-redis bash
+redis-cli
+----------------
