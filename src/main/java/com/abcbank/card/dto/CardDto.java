@@ -1,18 +1,16 @@
-package com.abcbank.card.model;
+package com.abcbank.card.dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import lombok.*;
-import org.springframework.stereotype.Component;
+import com.abcbank.card.model.CardType;
+import com.abcbank.card.model.PaymentNetwork;
+import lombok.Builder;
+import lombok.Data;
 
 @Data
-@Component
-@Entity
-public class Card {
+@Builder
+public class CardDto {
     private PaymentNetwork paymentNetwork;
     private CardType cardType;
 
-    @Id
     private Long cardNumber;
     private short expiryMonth;
     private short expiryYear;

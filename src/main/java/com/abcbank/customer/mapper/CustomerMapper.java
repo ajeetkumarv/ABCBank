@@ -5,6 +5,8 @@ import com.abcbank.customer.model.Customer;
 
 public class CustomerMapper {
 
+    private CustomerMapper() {}
+
     public static Customer toCustomer(CustomerDto customerDto) {
         Customer customer = new Customer();
 
